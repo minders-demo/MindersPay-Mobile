@@ -1,0 +1,6 @@
+{
+  "name": "Minders Pay Mobile",
+  "description": "Tu billetera digital LATAM - Fintech PWA",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["PWA", "Amplitude Tracking", "Framer Motion Animations"]
+}

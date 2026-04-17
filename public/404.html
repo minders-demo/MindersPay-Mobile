@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Minders Pay Mobile</title>
+    <script type="text/javascript">
+        // Redirigir todas las rutas a index.html para manejar el routing de SPA
+        var pathSegments = window.location.pathname.split('/');
+        var base = 'minders-pay-mobile';
+        var index = pathSegments.indexOf(base);
+        if (index !== -1) {
+            var route = pathSegments.slice(index + 1).join('/');
+            window.location.replace('/' + base + '/?/' + route);
+        } else {
+            window.location.replace('/' + base + '/');
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

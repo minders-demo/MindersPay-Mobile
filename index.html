@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>Minders Pay</title>
+    
+    <!-- PWA & Mobile Specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Minders Pay">
+    <link rel="apple-touch-icon" href="/minders-pay-mobile/icon-180.png">
+    <meta name="theme-color" content="#0D0F14">
+    <link rel="manifest" href="/minders-pay-mobile/manifest.webmanifest">
+
+    <!-- Amplitude Snippet -->
+    <script type="text/javascript">
+      !function(){"use strict";!function(e,t){var n=e.amplitude||{_q:[],_iq:{}};if(n.invoked)e.console&&e.console.error&&e.console.error("Amplitude snippet has already been invoked");else{var r=function(e,t){e.prototype[t]=function(){return this._q.push({name:t,args:Array.prototype.slice.call(arguments)}),this}},i=function(e,t,n){return function(r){e._q.push({name:t,args:Array.prototype.slice.call(arguments),resolve:n})}},o=function(e,t,n){e[t]=function(){e._q.push({name:t,args:Array.prototype.slice.call(arguments),resolve:n})}},a=function(e){function t(t){e[t]=function(){e._q.push({name:t,args:Array.prototype.slice.call(arguments)})}}for(var n=0;n<m.length;n++)t(m[n])},s=function(e){for(var t=0;t<v.length;t++)o(e,v[t],!1);for(var n=0;n<g.length;n++)o(e,g[n],!0)},c=e.document.createElement("script");c.type="text/javascript",c.integrity="sha384-cd5f1f0c8671ef6e683ff483bdac772f",c.crossOrigin="anonymous",c.async=!0,c.src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz",c.onload=function(){e.amplitude.runQueuedFunctions||e.console.error("[Amplitude] Error: could not load SDK")};var l=e.document.getElementsByTagName("script")[0];l.parentNode.insertBefore(c,l);for(var u=function(){return this._q=[],this},p=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove","getUserProperties"],f=0;f<p.length;f++)r(u,p[f]);n.Identify=u;for(var d=function(){return this._q=[],this},h=["getEventProperties","setEventProperties","clearEventProperties","setGroup","getGroup","setOptOut","setSessionId","getUserId","getDeviceId","getSessionId","onInit","onNewSessionStart","onLogEvent","setRevenue","getRevenue","getRevenueEvent","registerAdid","setTransport","setLibrary","setDeviceLanguage","setNetworkProvider","setPlatform","setAppVersion","setOsName","setOsVersion","setDeviceModel","setLogLevel","setMinTimeBetweenSessionsMillis","setRegenerateDeviceId","setInsecureIdMode","setUserId","setDeviceId","setEventProperties","clearEventProperties","setGroup","setGroups","setUserProperties","setOptOut","setInsecureIdMode","logEvent","logRevenue","logEventWithGroups","logRevenueWithGroups","identify","setSessionId","setTransport","setLibrary","setDeviceLanguage","setNetworkProvider","setPlatform","setAppVersion","setOsName","setOsVersion","setDeviceModel","setLogLevel","setMinTimeBetweenSessionsMillis","setRegenerateDeviceId"],y=0;y<h.length;y++)o(d,h[y],!1);n.Revenue=d;var m=["getDeviceId","setDeviceId","getSessionId","setSessionId","getUserId","setUserId","setOptOut","setTransport","reset","extendSession"],v=["track","identify","setGroup","setGroups","logEvent","logRevenue","setOptOut","setSessionId","setUserId","setDeviceId"],g=["onInit","onNewSessionStart","onLogEvent","setRevenue","getRevenue","getRevenueEvent","registerAdid"];a(n),n.getInstance=function(e){return e=e?e.toLowerCase():"$default_instance",n._iq.hasOwnProperty(e)||(n._iq[e]={_q:[]},a(n._iq[e]),s(n._iq[e])),n._iq[e]},e.amplitude=n}}(window,document)}();
+    </script>
+  </head>
+  <body class="bg-[#0D0F14] text-white antialiased overflow-hidden">
+    <div id="root" class="w-full h-full"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
