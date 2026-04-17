@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/minders-pay-mobile/',
+    base: '/MindersPay-Mobile/',
     plugins: [
       react(),
       tailwindcss(),
