@@ -34,7 +34,7 @@ export const NotificationsScreen = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col pb-20">
+    <div className="flex-1 flex flex-col pb-16">
       <ScreenHeader title="Notificaciones" />
       
       <div className="px-6 pt-6 flex-1 overflow-y-auto">
