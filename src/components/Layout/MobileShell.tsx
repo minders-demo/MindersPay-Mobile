@@ -34,11 +34,11 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
   return (
     <div className="flex justify-center items-center h-full w-full bg-[#050505]">
       <div className="relative w-full h-full max-w-[430px] bg-brand-bg flex flex-col md:h-dvh md:rounded-[48px] md:my-4 md:border-[8px] md:border-[#222] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
-        
+
         {/* Notch simulation - only on desktop */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-[#222] rounded-b-2xl z-[100] hidden md:block" />
 
-        {/* Content Area */}
+        {/* Scrollable content */}
         <div className="flex-1 overflow-y-auto scroll-smooth w-full h-full">
           <AnimatePresence mode="popLayout">
             <motion.div
@@ -54,16 +54,16 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
           </AnimatePresence>
         </div>
 
-        {/* Bottom Navigation — íconos en 60px fijos + safe area debajo por separado */}
+        {/* Bottom Nav — estructura explícita sin flex centering */}
         {!hideBottomBar && (
-          <nav
-            className="bg-brand-sidebar/80 backdrop-blur-[20px] border-t border-brand-border px-3"
+          <div
+            className="bg-brand-sidebar border-t border-brand-border"
             style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
           >
-            <div className="flex justify-around items-center h-[60px]">
+            <div className="flex justify-around px-2" style={{ height: '64px' }}>
               {navigationTabs.map((tab) => {
                 let isActive = currentScreen === tab.id;
-                
+
                 if (tab.id === 'dashboard') {
                   isActive = isActive || ['movements', 'notifications'].includes(currentScreen);
                 } else if (tab.id === 'products') {
@@ -80,47 +80,54 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
                   <button
                     key={tab.id}
                     onClick={() => navigate(tab.id as Screen)}
-                    className="flex flex-col items-center justify-center w-full h-full relative gap-0.5"
+                    className="relative flex flex-col items-center justify-center flex-1"
+                    style={{ gap: '2px' }}
                   >
-                    <motion.div
-                      whileTap={{ scale: 0.9 }}
-                      className={cn(
-                        "p-1.5 rounded-xl transition-colors",
-                        isActive ? "text-brand-orange" : "text-brand-gray"
-                      )}
-                    >
-                      <tab.icon size={22} />
-                    </motion.div>
-                    <span className={cn(
-                      "text-[10px] font-medium transition-colors leading-none",
-                      isActive ? "text-brand-orange" : "text-brand-gray"
-                    )}>
-                      {tab.label}
-                    </span>
+                    {/* Línea activa arriba */}
                     {isActive && (
-                      <motion.div 
+                      <motion.div
                         layoutId="activeTab"
-                        className="absolute -top-px left-1/4 right-1/4 h-0.5 bg-brand-orange rounded-full"
+                        className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-brand-orange rounded-full"
                       />
                     )}
+
+                    {/* Ícono */}
+                    <motion.div whileTap={{ scale: 0.85 }}>
+                      <tab.icon
+                        size={23}
+                        className={isActive ? 'text-brand-orange' : 'text-brand-gray'}
+                        strokeWidth={isActive ? 2.2 : 1.8}
+                      />
+                    </motion.div>
+
+                    {/* Label — siempre visible */}
+                    <span
+                      className={cn(
+                        'text-[10px] font-medium',
+                        isActive ? 'text-brand-orange' : 'text-brand-gray'
+                      )}
+                      style={{ lineHeight: '12px' }}
+                    >
+                      {tab.label}
+                    </span>
                   </button>
                 );
               })}
             </div>
-          </nav>
+          </div>
         )}
       </div>
     </div>
   );
 };
 
-export const ScreenHeader = ({ 
-  title, 
-  showBack = true, 
-  action 
-}: { 
-  title: string; 
-  showBack?: boolean; 
+export const ScreenHeader = ({
+  title,
+  showBack = true,
+  action,
+}: {
+  title: string;
+  showBack?: boolean;
   action?: ReactNode;
 }) => {
   const { goBack } = useUser();
@@ -128,15 +135,18 @@ export const ScreenHeader = ({
     <header className="h-14 flex items-center justify-between px-4 safe-pt sticky top-0 bg-brand-bg/80 backdrop-blur-md z-50 border-b border-brand-border/50">
       <div className="w-10">
         {showBack && (
-          <button onClick={goBack} className="p-2 -ml-2 text-brand-gray active:scale-90 transition-transform">
+          <button
+            onClick={goBack}
+            className="p-2 -ml-2 text-brand-gray active:scale-90 transition-transform"
+          >
             <ChevronLeft size={24} />
           </button>
         )}
       </div>
-      <h1 className="text-sm font-semibold tracking-tight text-white uppercase opacity-80">{title}</h1>
-      <div className="w-10 flex justify-end">
-        {action}
-      </div>
+      <h1 className="text-sm font-semibold tracking-tight text-white uppercase opacity-80">
+        {title}
+      </h1>
+      <div className="w-10 flex justify-end">{action}</div>
     </header>
   );
 };
