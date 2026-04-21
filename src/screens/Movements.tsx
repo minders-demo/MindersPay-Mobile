@@ -45,7 +45,7 @@ export const MovementsScreen = () => {
   });
 
   return (
-    <div className="flex-1 flex flex-col pb-24 h-screen overflow-hidden">
+    <div className="flex-1 flex flex-col pb-16 h-screen overflow-hidden">
       <ScreenHeader title="Movimientos" />
       
       <div className="px-6 py-4">
@@ -61,7 +61,7 @@ export const MovementsScreen = () => {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-6 pb-20">
+      <div className="flex-1 overflow-y-auto px-6 pb-16">
         {Object.entries(groupedTransactions).map(([date, txs]) => (
           <div key={date} className="mb-8">
             <h3 className="text-[10px] font-bold text-brand-gray uppercase tracking-widest mb-4 ml-1">{date}</h3>
