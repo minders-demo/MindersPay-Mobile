@@ -34,7 +34,7 @@ export const DashboardScreen = () => {
   const [showBalance, setShowBalance] = useState(true);
 
   return (
-    <div className="flex-1 pb-24">
+    <div className="flex-1 pb-16">
       <ScreenHeader 
         title="" 
         showBack={false}
