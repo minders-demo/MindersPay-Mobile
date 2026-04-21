@@ -78,7 +78,7 @@ export const ProductsScreen = () => {
   ];
 
   return (
-    <div className="flex-1 pb-24">
+    <div className="flex-1 pb-16">
       <ScreenHeader title="Mis Productos" showBack={false} />
       <div className="px-6 pt-4 space-y-8">
         {sections.map((section) => (
@@ -138,7 +138,7 @@ export const CardsHubScreen = () => {
   ];
 
   return (
-    <div className="flex-1 flex flex-col pb-20">
+    <div className="flex-1 flex flex-col pb-16">
       <ScreenHeader title="Tarjetas" />
       
       <div className="px-6 pt-6 flex-1 overflow-y-auto">
@@ -371,7 +371,7 @@ export const PocketsHubScreen = () => {
   const totalSavings = user.pockets.reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
-    <div className="flex-1 flex flex-col pb-24">
+    <div className="flex-1 flex flex-col pb-16">
       <ScreenHeader title="Bolsillos" />
       <div className="px-6 pt-6 flex-1">
         <div className="bg-brand-card border border-brand-border p-8 rounded-[40px] mb-8 relative overflow-hidden">
@@ -641,7 +641,7 @@ export const LoanRequestScreen = () => {
   const estimatedCuota = monthlyInstallment + lifeInsurance;
 
   return (
-    <div className="flex-1 flex flex-col pb-24 h-screen overflow-hidden">
+    <div className="flex-1 flex flex-col pb-16 h-screen overflow-hidden">
       <ScreenHeader title="Solicitar Crédito" />
       <div className="flex-1 overflow-y-auto px-6 pt-6 pb-12 space-y-8">
         <div>
@@ -886,7 +886,7 @@ export const LoanPaymentScreen = () => {
   return (
     <div className="flex-1 flex flex-col h-screen overflow-hidden">
       <ScreenHeader title="Pago de Crédito" />
-      <div className="flex-1 overflow-y-auto px-6 pt-6 pb-24 space-y-6">
+      <div className="flex-1 overflow-y-auto px-6 pt-6 pb-16 space-y-6">
         <div>
            <h2 className="text-2xl font-black text-white mb-1 leading-tight">{loan.name}</h2>
            <p className="text-sm font-medium text-brand-gray">Elige cuánto deseas pagar</p>
@@ -1141,7 +1141,7 @@ export const FinanceScreen = () => {
     <div className="flex-1 flex flex-col pb-12 h-screen overflow-hidden">
       <ScreenHeader title="Finanzas e Inversión" showBack={false} />
       
-      <div className="flex-1 overflow-y-auto pt-6 px-6 pb-20 no-scrollbar">
+      <div className="flex-1 overflow-y-auto pt-6 px-6 pb-16 no-scrollbar">
         <div className="flex items-center justify-between mb-8">
            <div>
               <h2 className="text-2xl font-black text-white">Resumen IA</h2>
@@ -1432,9 +1432,9 @@ export const ProfileScreen = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col pb-24 h-screen overflow-hidden relative">
+    <div className="flex-1 flex flex-col pb-16 h-screen overflow-hidden relative">
       <ScreenHeader title="Mi Perfil" />
-      <div className="flex-1 overflow-y-auto pt-8 px-6 pb-20 no-scrollbar space-y-8">
+      <div className="flex-1 overflow-y-auto pt-8 px-6 pb-16 no-scrollbar space-y-8">
         {/* Avatar Section */}
         <div className="flex flex-col items-center">
           <div className="relative group cursor-pointer active:scale-95 transition-transform">
@@ -1601,7 +1601,7 @@ export const BusinessDashboardScreen = () => {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-6">
        <ScreenHeader title="Perfil de Comercio" showBack={true} />
-       <div className="flex-1 flex flex-col items-center justify-center text-center pb-20">
+       <div className="flex-1 flex flex-col items-center justify-center text-center pb-16">
           <div className="w-24 h-24 bg-brand-card rounded-full border-2 border-dashed border-brand-border flex items-center justify-center mb-6">
              <Briefcase size={40} className="text-brand-gray opacity-50" />
           </div>
