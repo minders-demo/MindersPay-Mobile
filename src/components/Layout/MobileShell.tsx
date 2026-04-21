@@ -33,13 +33,12 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
 
   return (
     <div className="flex justify-center items-center h-full w-full bg-[#050505]">
-      {/* Device Frame (Desktop QA) / Full Screen (Mobile) */}
       <div className="relative w-full h-full max-w-[430px] bg-brand-bg flex flex-col md:h-dvh md:rounded-[48px] md:my-4 md:border-[8px] md:border-[#222] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden">
         
-        {/* Notch simulation - only visible on desktop wrapper */}
+        {/* Notch simulation - only on desktop */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-[#222] rounded-b-2xl z-[100] hidden md:block" />
 
-        {/* Content Area — FIX 1: removed safe-pt from here, it belongs only in ScreenHeader */}
+        {/* Content Area */}
         <div className="flex-1 overflow-y-auto scroll-smooth w-full h-full">
           <AnimatePresence mode="popLayout">
             <motion.div
@@ -55,17 +54,24 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
           </AnimatePresence>
         </div>
 
-        {/* Bottom Navigation — FIX 2: uses nav-safe-bottom class for iPhone home indicator */}
+        {/* Bottom Navigation — íconos en 60px fijos + safe area debajo por separado */}
         {!hideBottomBar && (
-          <nav className="bg-brand-sidebar/80 backdrop-blur-[20px] border-t border-brand-border nav-safe-bottom px-3">
-            <div className="flex justify-around items-center h-[56px]">
+          <nav
+            className="bg-brand-sidebar/80 backdrop-blur-[20px] border-t border-brand-border px-3"
+            style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+          >
+            <div className="flex justify-around items-center h-[60px]">
               {navigationTabs.map((tab) => {
                 let isActive = currentScreen === tab.id;
                 
                 if (tab.id === 'dashboard') {
                   isActive = isActive || ['movements', 'notifications'].includes(currentScreen);
                 } else if (tab.id === 'products') {
-                  isActive = isActive || ['cards_hub', 'pockets_hub', 'pocket_create', 'pocket_edit', 'card_data_view', 'card_pin_change', 'card_request_address', 'card_request_confirm', 'loans_hub', 'loan_request', 'loan_sign', 'insurance_hub'].includes(currentScreen);
+                  isActive = isActive || [
+                    'cards_hub', 'pockets_hub', 'pocket_create', 'pocket_edit',
+                    'card_data_view', 'card_pin_change', 'card_request_address',
+                    'card_request_confirm', 'loans_hub', 'loan_request', 'loan_sign', 'insurance_hub'
+                  ].includes(currentScreen);
                 } else if (tab.id === 'profile') {
                   isActive = isActive || ['profile'].includes(currentScreen);
                 }
@@ -74,7 +80,7 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
                   <button
                     key={tab.id}
                     onClick={() => navigate(tab.id as Screen)}
-                    className="flex flex-col items-center justify-center w-full h-full relative"
+                    className="flex flex-col items-center justify-center w-full h-full relative gap-0.5"
                   >
                     <motion.div
                       whileTap={{ scale: 0.9 }}
@@ -83,10 +89,10 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
                         isActive ? "text-brand-orange" : "text-brand-gray"
                       )}
                     >
-                      <tab.icon size={24} />
+                      <tab.icon size={22} />
                     </motion.div>
                     <span className={cn(
-                      "text-[10px] font-medium transition-colors",
+                      "text-[10px] font-medium transition-colors leading-none",
                       isActive ? "text-brand-orange" : "text-brand-gray"
                     )}>
                       {tab.label}
