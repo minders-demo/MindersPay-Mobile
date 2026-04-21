@@ -35,11 +35,11 @@
   body {
     background-color: var(--color-brand-bg);
     color: white;
-    overscroll-behavior-y: none; /* Prevent rubber banding */
+    overscroll-behavior-y: none;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    position: fixed; /* Lock body scrolling entirely, let MobileShell handle it */
+    position: fixed;
   }
 
   /* Prevent zoom on iOS inputs */
@@ -53,6 +53,11 @@
   .safe-pb { padding-bottom: var(--sab); }
   .safe-mt { margin-top: var(--sat); }
   .safe-mb { margin-bottom: var(--sab); }
+
+  /* FIX 2: Bottom nav respects iPhone home indicator */
+  .nav-safe-bottom {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
 }
 
 /* Custom Scrollbar */
