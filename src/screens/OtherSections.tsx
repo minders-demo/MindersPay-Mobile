@@ -641,9 +641,9 @@ export const LoanRequestScreen = () => {
   const estimatedCuota = monthlyInstallment + lifeInsurance;
 
   return (
-    <div className="flex-1 flex flex-col pb-16 h-screen overflow-hidden">
+    <div className="flex-1 flex flex-col">
       <ScreenHeader title="Solicitar Crédito" />
-      <div className="flex-1 overflow-y-auto px-6 pt-6 pb-12 space-y-8">
+      <div className="flex-1 overflow-y-auto px-6 pt-6 pb-32 space-y-8">
         <div>
           <h2 className="text-2xl font-black text-white mb-2 leading-tight">¡Tienes un crédito pre-aprobado!</h2>
           <p className="text-brand-gray text-sm leading-relaxed">Personaliza tu préstamo y recíbelo en minutos, sin papeleos.</p>
@@ -710,7 +710,7 @@ export const LoanRequestScreen = () => {
         </div>
       </div>
       
-      <div className="p-6 bg-brand-bg absolute bottom-[64px] left-0 right-0 border-t border-brand-border">
+      <div className="p-4 bg-brand-bg border-t border-brand-border">
          <Button onClick={() => navigate('loan_sign', { amount, months, cuota: estimatedCuota })}>
             Continuar a la firma <ArrowRight size={18} className="ml-2" />
          </Button>
@@ -959,7 +959,7 @@ export const LoanPaymentScreen = () => {
         </div>
       </div>
       
-      <div className="p-6 bg-brand-bg absolute bottom-[64px] left-0 right-0 border-t border-brand-border">
+      <div className="p-4 bg-brand-bg border-t border-brand-border">
          <Button 
            onClick={handlePayment} 
            disabled={amountToPay <= 0 || amountToPay > user.balance}
@@ -1550,7 +1550,7 @@ export const ProfileScreen = () => {
         </div>
       </div>
 
-      <div className="p-6 bg-brand-bg/80 backdrop-blur-xl border-t border-brand-border absolute bottom-[64px] left-0 right-0 z-[50]">
+      <div className="p-4 bg-brand-bg/80 backdrop-blur-xl border-t border-brand-border">
          <Button onClick={handleSaveAttempt} loading={saving}>Guardar Cambios</Button>
       </div>
 
