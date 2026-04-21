@@ -39,8 +39,8 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
         {/* Notch simulation - only visible on desktop wrapper */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-[#222] rounded-b-2xl z-[100] hidden md:block" />
 
-        {/* Content Area */}
-        <div className="flex-1 overflow-y-auto scroll-smooth w-full h-full safe-pt">
+        {/* Content Area — FIX 1: removed safe-pt from here, it belongs only in ScreenHeader */}
+        <div className="flex-1 overflow-y-auto scroll-smooth w-full h-full">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={currentScreen}
@@ -55,10 +55,10 @@ export const MobileShell = ({ children, currentScreen }: MobileShellProps) => {
           </AnimatePresence>
         </div>
 
-        {/* Bottom Navigation */}
+        {/* Bottom Navigation — FIX 2: uses nav-safe-bottom class for iPhone home indicator */}
         {!hideBottomBar && (
-          <nav className="bg-brand-sidebar/80 backdrop-blur-[20px] border-t border-brand-border h-[84px] pb-6 px-3">
-            <div className="flex justify-around items-center h-full">
+          <nav className="bg-brand-sidebar/80 backdrop-blur-[20px] border-t border-brand-border nav-safe-bottom px-3">
+            <div className="flex justify-around items-center h-[56px]">
               {navigationTabs.map((tab) => {
                 let isActive = currentScreen === tab.id;
                 
